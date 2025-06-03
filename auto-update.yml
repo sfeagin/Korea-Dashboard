@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3. x'
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run data scripts
@@ -25,14 +25,13 @@ jobs:
           python scripts/clean_data.py
       - name: Commit updated data
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config-- local user.email "action@github.com"
+          git config-- local user. name "GitHub Action"
           git add dashboard/tableau_data.xlsx
           git commit -m "Auto-update data"
           git push
-       curl -X POST \
   -H "Accept: application/vnd.github+json" \
   -H "Authorization: Bearer YOUR_GITHUB_TOKEN" \
   https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/actions/workflows/auto-update.yml/dispatches \
-  -d '{"ref":"main"}'
+  -d '{"ref": "main"}'
 
