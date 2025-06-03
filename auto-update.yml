@@ -30,5 +30,9 @@ jobs:
           git add dashboard/tableau_data.xlsx
           git commit -m "Auto-update data"
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       curl -X POST \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer YOUR_GITHUB_TOKEN" \
+  https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/actions/workflows/auto-update.yml/dispatches \
+  -d '{"ref":"main"}'
+
